@@ -102,7 +102,7 @@ And that&#8217;s pretty much all the code that&#8217;s necessary.</p>
 <li>Sort tasks by date</li>
 <li>Add authentication. Anyone who visits the URL shouldn&#8217;t be able to see all your tasks.</li>
 </ul><div class="author">
-  <img src="http://nilenso.com/people/timothy-200.png" style="width: 96px; height: 96;">
+  <img src="http://nilenso.com/people/timothy-200.jpg" style="width: 96px; height: 96;">
   <span style="position: absolute; padding: 32px 15px;">
     <i>Original post by <a href="http://twitter.com/">Timothy Andrew</a> - check out <a href="http://blog.timothyandrew.net/">Timothy's Blog</a></i>
   </span>

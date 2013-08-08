@@ -153,19 +153,19 @@ header#sidebar h2#subtitle {
   }
 
   aside#logo {
-    width: 165px;
-    height: 165px;
+    width: 200px;
+    height: 230px;
   }
 
   aside#logo div {
-    width: 135px;
-    height: 135px;
+    width: 200px;
+    height: 200px;
     margin-top: 15px;
   }
 
   aside#logo div a {
-    width: 117px;
-    height: 117px;
+    width: 200px;
+    height: 200px;
     margin-top: 9px;
   }
 
@@ -188,7 +188,7 @@ header#sidebar h2#subtitle {
 // Short screen
 @media only screen and (max-height: 650px) {
   #sidebar {
-    position: absolute;
+    position: fixed;
   }
 
   #octopress_linkback {
