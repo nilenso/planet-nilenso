@@ -17,9 +17,17 @@ blogs:
     feed: "http://blog.timothyandrew.net/atom.xml"
     image:  "http://nilenso.com/people/timothy-200.jpg"
 
-  # - author: Neha Kumari
-  #   feed: "http://isateapot.com/rss"
-  #   image:  "http://nilenso.com/people/neha-200.png"
+  - author: Neha Kumari
+    feed: "http://isateapot.com/rss"
+    image:  "http://nilenso.com/people/neha-200.png"
+
+  - author: Steven Deobald
+    feed: "http://blog.deobald.ca/feeds/posts/default"
+    image:  "http://nilenso.com/people/steven-200.png"
+
+  - author: Prashant Karpe
+    feed: "http://like-that-only.tumblr.com/rss"
+    image:  "http://nilenso.com/people/prashant-200.png"
 
   # - author: Asif Kalam
   #   feed: "http://blog.asifskalam.com/"
@@ -29,10 +37,10 @@ blogs:
   #   feed: "http://jithugopal.com/blog/"
   #   image:  "http://nilenso.com/people/jithu-200.png"
 
-  # - author: Prashant Karpe
-  #   feed: "http://like-that-only.tumblr.com"
-  #   image:  "http://nilenso.com/people/prashant-200.png"
+  # - author: Srihari Sriraman
+  #   feed: "http://sriharisriraman.in/"
+  #   image:  "http://nilenso.com/people/srihari-200.png"
 
-  # - author: Steven Deobald
-  #   feed: "http://blog.deobald.ca/"
-  #   image:  "http://nilenso.com/people/steven-200.png"
+  # - author: Nivedita Priyadarshini
+  #   feed: "http:///"
+  #   image:  "http://nilenso.com/people/nid-200.png"
