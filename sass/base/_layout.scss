@@ -117,7 +117,7 @@ header#sidebar h1#title {
   border-left: 1px solid #e3e3e3;
   margin-left: 27%;
   min-height: 900px;
-  min-width: 658px;
+  // min-width: 658px;
   position: relative;
   z-index: 9999;
 }
@@ -266,7 +266,7 @@ header#sidebar h2#subtitle {
   }
 
   article.post {
-    width: auto;
+    width: 80%;
     padding-left: 0;
     padding-top: 30px;
     padding-bottom: 15px;
@@ -286,7 +286,7 @@ header#sidebar h2#subtitle {
 
 // Articles
 article.post {
-  width: auto;
+  width: 80%;
   position: relative;
   padding-left: 50px;
   padding-top: 40px;
