@@ -68,10 +68,13 @@ header.topbar {
 
 .description {
   color: $pink;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 24px;
   font-family: "Rokkitt", serif;
   text-shadow: 1px 1px 2px white;
+  width: 65%;
+  max-width: 300px;
+  margin: 0 0 30px 30px;
 }
 
 .logo-name {
@@ -106,4 +109,12 @@ ul#menu a.popular-link {
   padding: 0;
   font-size: 14px;
   line-height: 16px;
+}
+
+.popular-heading {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
 }

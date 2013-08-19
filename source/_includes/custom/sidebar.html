@@ -1,10 +1,12 @@
 <div class="clearspace"></div>
+{% if site.subtitle %}
+<p class="description">{{ site.subtitle }}</p>
 <ul id="menu">
-  {% if site.subtitle %}
-  <li class="description">
-    <span>{{ site.subtitle }}</span>
-  </li>
   {% endif %}
+
+  <li>
+    <span class="popular-heading">Popular Posts</span>
+  </li>
 
   {% for post in site.popular_posts limit: site.popular_posts_count %}
   <li>
