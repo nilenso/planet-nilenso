@@ -13,3 +13,4 @@ vendor
 node_modules
 bin
 .page_ranks
+config/deploy.rb
