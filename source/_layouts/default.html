@@ -1,9 +1,18 @@
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
 {% include head.html %}
 <body {% if page.body_id %}id="{{ page.body_id }}" {% endif %}>
+  <header class="topbar">
+    <img class="logo-image left" src="images/nilenso-200.png" />
+    <a class="header-link logo-name left" href="http://nilenso.com">planet nilenso</a>
+    <a class="header-link right page-link" href="atom.xml" data-page="contact">rss</a>
+    <a class="header-link right page-link" href="http://github.com/nilenso">github</a>
+    <a class="header-link right page-link" href="http://twitter.com/nilenso">twitter</a>
+    <a class="header-link right page-link active" id="about-link" href="http://nilenso.com">about</a>
+  </header>
   <header role="banner" id="sidebar">
     {% include custom/sidebar.html %}
   </header>
+  <div class="clearspace"></div>
   <section id="main">
     {{ content | expand_urls: root_url }}
     <nav role="navigation" id="pagination">{% include navigation.html %}</nav>

@@ -1,0 +1,70 @@
+@font-face {
+  font-family: 'Junction';
+  src: url('/assets/fonts/junction-webfont.eot?v=1.0');
+  src: url('/assets/fonts/junction-webfont.eot?#iefix&v=1.0') format('embedded-opentype'), url('/assets/fonts/junction-webfont.woff?v=1.0') format('woff'), url('/assets/fonts/junction-webfont.ttf?v=1.0') format('truetype'), url('/assets/fonts/junction-webfont.svg#junctionregular?v=1.0') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$topbar-height: 56px;
+body {
+  background-image: url("../images/texture.png");
+  background-color: #EEEEEE;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.logo-image {
+  width: 50px;
+}
+
+header.topbar {
+  width: 100%;
+  height: $topbar-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  opacity: 0.8;
+  overflow: hidden;
+  padding: 4px 20px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  z-index: 10000;
+}
+
+.clearspace {
+  padding-top: $topbar-height;
+}
+
+.header-link {
+  font-size: 16px;
+  font-family: 'museo-sans' sans-serif;
+  color: black;
+  line-height: $topbar-height;
+  padding: 0 10px;
+}
+
+.logo-name {
+  font-family: 'Junction';
+  font-size: 30px;
+  padding: 0 4px;
+}
+
+.page-link {
+  border-top: 3px solid transparent;
+}
+
+.page-link.active {
+  border-color: #f8337d;
+}
+
+.page-link:hover {
+  border-color: pink;
+}
