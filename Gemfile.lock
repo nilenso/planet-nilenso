@@ -1,6 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    PageRankr (3.2.1)
+      json (>= 1.4.6)
+      jsonpath (>= 0.4.2)
+      nokogiri (>= 1.4.1)
+      public_suffix (>= 0.9.0)
+      typhoeus (>= 0.2.1)
     RedCloth (4.2.9)
     activesupport (3.1.12)
       multi_json (~> 1.0)
@@ -15,6 +21,9 @@ GEM
       sass (~> 3.1)
     curb (0.7.18)
     directory_watcher (1.4.1)
+    ethon (0.6.0)
+      ffi (>= 1.3.0)
+      mime-types (~> 1.18)
     fast-stemmer (1.0.1)
     feedzirra (0.1.3)
       activesupport (~> 3.1.1)
@@ -26,6 +35,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.8)
       sax-machine (~> 0.1.0)
+    ffi (1.9.0)
     fssm (0.2.9)
     gli (2.7.0)
     haml (3.1.7)
@@ -38,21 +48,27 @@ GEM
       maruku (~> 0.5)
       pygments.rb (~> 0.3.2)
     json (1.7.7)
+    jsonpath (0.5.3)
+      multi_json
     kramdown (0.13.8)
     liquid (2.3.0)
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
     maruku (0.6.1)
       syntax (>= 1.0.0)
+    mime-types (1.24)
     multi_json (1.6.0)
     mustache (0.99.4)
     nokogiri (1.5.5)
+    octopress-popular-posts (0.1.0)
+      PageRankr (~> 3.2.1)
     planet (0.4.1)
       box
       feedzirra
       gli
       mustache
     posix-spawn (0.3.6)
+    public_suffix (1.3.1)
     pygments.rb (0.3.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -77,6 +93,8 @@ GEM
     stringex (1.4.0)
     syntax (1.0.0)
     tilt (1.3.7)
+    typhoeus (0.6.4)
+      ethon (~> 0.6.0)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -88,6 +106,7 @@ DEPENDENCIES
   haml (~> 3.1.7)
   jekyll (~> 0.12)
   liquid (~> 2.3.0)
+  octopress-popular-posts
   planet
   pygments.rb (~> 0.3.4)
   rake (~> 0.9)

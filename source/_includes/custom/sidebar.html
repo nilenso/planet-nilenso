@@ -1,37 +1,16 @@
-<!-- Logo -->
-<aside id="logo" class="clearfix">
-  <div class="clearfix">
-    <a href="{{ root_url}}/">{{ site.title }}</a>
-  </div>
-</aside>
-
+<div class="clearspace"></div>
 <ul id="menu">
-{% if site.title %}
-  <li class="title">
-    <h1 id="title"><a href="{{ root_url }}/">{{ site.title }}</a></h1>
+  {% if site.subtitle %}
+  <li class="description">
+    <span>{{ site.subtitle }}</span>
   </li>
-{% endif %}
-{% if site.subtitle %}
-  <li class="subtitle">
-    <h2 id="subtitle">{{ site.subtitle }}</h2>
+  {% endif %}
+
+  {% for post in site.popular_posts limit: site.popular_posts_count %}
+  <li>
+    <a class="popular-link" href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
   </li>
-{% endif %}
-  <li class="link">
-    <a href="http://nilenso.com" target="_blank">about</a>
-  </li>
-{% if site.twitter_user %}
-  <li class="link">
-    <a href="http://twitter.com/{{ site.twitter_user }}/">twitter</a>
-  </li>
-{% endif %}
-{% if site.github_user and site.github_show_profile_link %}
-  <li class="link">
-    <a href="http://github.com/{{ site.github_user }}/">github</a>
-  </li>
-{% endif %}
-  <li class="link rss">
-    <a href="/atom.xml">rss feed</a>
-  </li>
+  {% endfor %}
 </ul>
 
 {% if site.simple_search %}

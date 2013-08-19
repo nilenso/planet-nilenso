@@ -2,9 +2,9 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://nilenso.com
+url: http://planet.nilenso.com
 title: Planet Nilenso
-subtitle: A blogging planet for ensonians.
+subtitle: A blogging planet for ensonians
 author: Nilenso
 simple_search:
 description: Nilenso (formerly the consulting arm of C42 Engineering) is an employee-owned software cooperative. We ship beautiful, fully-tested applications for you every day.
@@ -99,3 +99,7 @@ google_analytics_tracking_id:
 # Facebook Like
 facebook_like: false
 
+# Posts in the sidebar Popular Posts section
+popular_posts_count: 5
+
+default_asides: [custom/asides/about.html, custom/asides/subscribe.html, custom/asides/popular_posts.html, asides/recent_posts.html, asides/github.html, asides/twitter.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
