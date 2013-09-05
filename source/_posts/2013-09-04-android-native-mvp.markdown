@@ -5,32 +5,108 @@ date: 2013-09-04 18:33
 author: [Jithu Gopal, Akshay Gupta]
 comments: true
 published: false
+
 ---
 
-As we set out to develop our very first native android app for [Ashoka Survey](https://github.com/nilenso/ashoka-survey-mobile-native), discussions kicked up a notch about how should the architecture pan out. Literature in the internet was not promising for almost every hurdle we jumped through - setting up the IDE, prominent libraries that could come handy, better ways to do testing. After three to four repo reboots, we finally decided on these -
+As we set out to develop our very first native android app for [Ashoka Survey](https://github.com/nilenso/ashoka-survey-mobile-native), discussions about how should the architecture pan out ensued. Literature in the internet was not promising and we had to come back to the drawing board for almost every hurdle we jumped through - setting up the IDE, prominent libraries that could come handy, better ways to do testing. After two repo reboots, we finally decided on these -
 
 - IntelliJ Idea CE
+- JUnit
 - [Robolectric](https://github.com/robolectric/robolectric)
-- [RoboGuice]()
-- FEST for android
+- [RoboGuice](https://github.com/roboguice/roboguice)
+- [Mockito](https://code.google.com/p/mockito)
+- [FEST](http://fest.easytesting.org/)
 
-### Structure
+Maven dictated the basic skeleton to work out from. If you are not aware of dependency injection, do checkout an [earlier post by us on RoboGuice](http://planet.nilenso.com/blog/2013/07/10/using-roboguice-to-inject-views-into-a-pojo/). We used [Android Async Http library](https://github.com/loopj/android-async-http) to deal with servicing network requests.
 
-Maven dictated the basic skeleton to work out from. Once we had the project setup sorted out we ventured into getting out a basic login screen. 
+Once we had the project setup sorted out, we ventured into getting out a basic login screen.
 
+### Architecture
 
-###Problems
+Identifying boundaries is paramount for writing good tests. Our `LoginActivity` started out to do way too many things - talking to network boundary and manipulating the view along with it. Testing proved to be a challenge at this point. What we wanted was -
 
-Identifying boundaries is paramount for writing good tests. Our `LoginActivity` started out to do way too many things - talking to network boundary and manipulating the view along with it. Testing proved to be a challenge at this point. What we wanted at this point was -
+1. Check to see if a view layer could be extracted out from `Activity`.
+2. Identify a service layer which deals with IO.
+3. Identify an presenter which could orchestrate the above.
 
-1. Being able to test the view behaviour in isolation.
-2. Testing if appropriate handlers are triggered according to responses from network layer.
-3. Identify a service layer which deals with IO, so that mocks can be cheap and painless. 
+Basically, flesh out an MVP-ish architecture. If the view layer and service layer can be neatly segregated out from the `Activity` into the presenter, testing them is just a breeze.
 
-The idea is that we should be able to test in isolation what view decisions are being made due to different interactions on our application, without actually caring about what the view would look like.
+![MVP](/images/mvp.png)
 
-That essentially breaks down our testing strategies into:
+A peek into the [LoginActivity](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/main/java/com/infinitisuite/surveymobile/LoginActivity.java) reveals this.
 
-- Testing how the view behaves
-- Testing how the view interacts with the boundaries
+```java
+public class LoginActivity extends RoboActivity {
 
+    @Inject LoginPresenter mPresenter;
+    @InjectView(R.id.sign_in_button) Button mSignInButtonView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        mPresenter.onCreate();
+
+        mSignInButtonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPresenter.attemptLogin();
+            }
+        });
+    }
+    ...
+}
+```
+
+That's it! Everything else is being delegated to the presenter. Nice and clean.
+
+So, let's look at the [LoginPresenter](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/main/java/com/infinitisuite/surveymobile/presenters/LoginPresenter.java).
+
+```java
+public class LoginPresenter {
+    private IUserService userService;
+    private ILoginView loginView;
+
+    @Inject
+    public LoginPresenter(IUserService userService, ILoginView loginView) {
+        this.userService = userService;
+        this.loginView = loginView;
+    }
+    ...
+}
+```
+Presenter is injected with the [UserService](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/main/java/com/infinitisuite/surveymobile/services/UserService.java) and the [LoginView](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/main/java/com/infinitisuite/surveymobile/views/LoginView.java) which then acts more or less like a controller henceforth. If you notice carefully, the presenter speaks only to respective service and view interfaces. This helps in generating cheap mocks against which you can run your tests.
+
+Let's have a look at [LoginPresenterTest](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/test/java/com/infinitisuite/surveymobile/presenters/LoginPresenterTest.java).
+
+```java
+public class LoginPresenterTest {
+
+    private LoginPresenter presenter;
+    private ILoginView loginViewMock;
+    private UserServiceStub userService;
+
+    @Before
+    public void setUp() throws Exception {
+        loginViewMock = mock(ILoginView.class);
+        userService = new UserServiceStub();
+        presenter = new LoginPresenter(userService, loginViewMock);
+    }
+    ...
+    @Test
+    public void shows_error_message_if_username_and_password_are_wrong() throws Exception {
+        userService.setFailure();
+        doReturn("foo@bar.com").when(loginViewMock).getEmail();
+        doReturn("bar").when(loginViewMock).getPassword();
+        presenter.attemptLogin();
+        verify(loginViewMock, times(1)).showLoginError();
+    }
+    ...
+}
+```
+
+The mock is setup and verified to see if the contract defined by ILoginView interface is invoked. It should be pointed out this is the farthest these tests could go and are not exactly end-to-end. You could just create implementation stubs out of this interface, not touching any view state, and still have the test passing. But having this view layer abstraction, makes it so painless to write presenter tests. Probably it might make sense to have a combination of few end-to-end tests and a whole battery of these functional tests.
+
+### Conclusion
+
+Our intention to give MVP a go mainly attributes to the fact that android architecture does not appear to have set in stone patterns and practices yet. It still isn't clear if MVP would pan out well with complex views or is it justified to break view logic entirely out of `Activity`. This is very much a work in progress.
