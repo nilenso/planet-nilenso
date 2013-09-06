@@ -3,11 +3,11 @@ layout: post
 title: "Ashoka Survey Title"
 date: 2013-09-03 18:21
 comments: true
-published: false 
+published: false
 
 ---
 
-At Nilenso, we've helped [Ashoka](http://india.ashoka.org/) accomplish their initiative in building infrastructure for the [citizen sector](https://www.ashoka.org/citizensector). 
+At Nilenso, we've helped [Ashoka](http://india.ashoka.org/) accomplish their initiative in building infrastructure for the [citizen sector](https://www.ashoka.org/citizensector).
 
 
 Infiniti, is a suite of products envisioned for social entrepreneurs, the fellows at Ashoka and other citizen sector organizations to get a variety of quality data through crowd sourcing, organized surveys and market research. It is currently very much in use at Ashoka around these verticals:
@@ -31,14 +31,14 @@ We created a quick one-minute screencast that describes a simple workflow on how
 <video width="640" height="360" controls>
   <source src="http://cl.ly/0f0u0P0B2N21/ashoka-survey-screencast.mp4" type="video/mp4">
   Your browser does not support the video tag.
-</video> 
+</video>
 
 ### Why we needed a custom SB?
 We looked at Wufoo, Google Forms, Survey Monkey before deciding to write our hand-rolled Survey Builder.
 
 - No offline mode
 - Infinite nesting of questions and sub-questions
-- Very targeted question types 
+- Very targeted question types
 
 
 ---
@@ -59,6 +59,29 @@ So, Having designed a questionnaire, one can quickly digitize these questions us
 - Surveys can be shared between orgs
 - Can be shared publicly
 
-### This is how we built it
+---
+
+
+## This is how it is built
+
+The survey application is 4 parted:
+
+- The auth provider, user-owner: https://github.com/nilenso/ashoka-user-owner
+- The survey builder, survey-web: https://github.com/nilenso/ashoka-survey-web
+- The response collector, survey-web: https://github.com/nilenso/ashoka-survey-web
+- The Mobile apps, survey-mobile: https://github.com/nilenso/ashoka-survey-mobile) and survey-mobile-native](https://github.com/nilenso/ashoka-survey-mobile-native)
+
+
+Here's a figure explaining their roles and interfaces:
+
+![Architecture Diagram](/images/architecture.png)
+
+The user-owner app was built for Ashoka to serve as the auth provider for all of it's web services. It is implemented using the [doorkeeper](https://github.com/applicake/doorkeeper) gem.
+
+The clients Survey Mobile and Survey Web Response, use the API that is thrown by the Survey Web app. The API specification for this can be found here: [insert link here]
 
 ### This is what we plan to do next
+- redesign of builder - v2
+- redesign of native app
+- native app
+- data centric application
