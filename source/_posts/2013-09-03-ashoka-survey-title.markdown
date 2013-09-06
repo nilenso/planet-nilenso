@@ -33,7 +33,7 @@ We created a quick one-minute screencast that describes a simple workflow on how
   Your browser does not support the video tag.
 </video>
 
-### Why we needed a custom SB?
+## Why we needed a custom SB?
 We looked at Wufoo, Google Forms, Survey Monkey before deciding to write our hand-rolled Survey Builder.
 
 - No offline mode
@@ -42,7 +42,7 @@ We looked at Wufoo, Google Forms, Survey Monkey before deciding to write our han
 
 
 ---
-### This is what it can do
+## This is what it can do
 
 After identifying the problem and designing a set of questions around it, it's useful to have it digitized quickly.
 
@@ -69,7 +69,9 @@ The survey application is 4 parted:
 - The auth provider, user-owner: https://github.com/nilenso/ashoka-user-owner
 - The survey builder, survey-web: https://github.com/nilenso/ashoka-survey-web
 - The response collector, survey-web: https://github.com/nilenso/ashoka-survey-web
-- The Mobile apps, survey-mobile: https://github.com/nilenso/ashoka-survey-mobile) and survey-mobile-native](https://github.com/nilenso/ashoka-survey-mobile-native)
+- The Mobile apps:
+  survey-mobile: https://github.com/nilenso/ashoka-survey-mobile
+  survey-mobile-native: https://github.com/nilenso/ashoka-survey-mobile-native
 
 
 Here's a figure explaining their roles and interfaces:
@@ -78,10 +80,22 @@ Here's a figure explaining their roles and interfaces:
 
 The user-owner app was built for Ashoka to serve as the auth provider for all of it's web services. It is implemented using the [doorkeeper](https://github.com/applicake/doorkeeper) gem.
 
-The clients Survey Mobile and Survey Web Response, use the API that is thrown by the Survey Web app. The API specification for this can be found here: [insert link here]
 
-### This is what we plan to do next
-- redesign of builder - v2
-- redesign of native app
-- native app
-- data centric application
+---
+
+
+## This is what we plan to do next
+
+### Survey Builder V2
+The current survey builder, although built with a lot of thought on usability, fails on a few aspects. Accenture woked on the designs for a better survey builder. This is a work in progress, and can be viewed from the create-v2 menu. The new VDs are [here](https://github.com/nilenso/ashoka-survey-web/commit/a5aeb01fadedf43311a779412ef49c0c28081d92)
+
+### The Native Android App
+The currently funtional survey-mobile is built with [Titanium](http://www.appcelerator.com/platform/titanium-platform/). It works, but we certainly want to move away from this, to a native app.
+Here is where we are with the native app as of now: [insert link to jithu's post]
+
+### Mobile app redesign
+Here are the mockups for the new mobile app: [insert link here]
+
+### Data Portal
+Each survey conducted by ashoka typically has about 300 responses. We currently have some basic reports built with google charts. But we don't have the ability to say, interpret data of similar/same respondants across multiple surveys.
+Here are the mockups for what is planned in this regard: [insert link to mockups]
