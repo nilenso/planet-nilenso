@@ -22,8 +22,8 @@ The Infiniti suite is largely composed of these attributes:
 
 As a part of this, we built Ashoka Survey Web––one of the arms that takes care of data collection, validation, integrity and reporting.
 
-## Survey Web
----
+\## Survey Web
+
 <Explain a bit of the architecture here>
 
 We created a quick one-minute screencast that describes a simple workflow on how a survey is created, how a response is taken on that survey on the web and some basic reports you can see around it.
@@ -74,7 +74,7 @@ The survey application is 4 parted:
 
 Here's a figure explaining their roles and interfaces:
 
-![Architecture Diagram](/images/architecture.png)
+![Architecture Diagram](http://cl.ly/image/3a0n2g0Q1A16/architecture.png)
 
 The user-owner app was built for Ashoka to serve as the auth provider for all of it's web services. It is implemented using the [doorkeeper](https://github.com/applicake/doorkeeper) gem.
 
