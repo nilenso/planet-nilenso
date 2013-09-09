@@ -70,3 +70,7 @@ header.nilenso-header {
 }
 
 nav header a:visited {color: black;}
+
+.rss-link:hover .rss-link-image {
+  @include filter(contrast(50%));
+}
