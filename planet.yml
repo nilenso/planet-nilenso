@@ -37,9 +37,9 @@ blogs:
   #   feed: "http://jithugopal.com/blog/"
   #   image:  "http://nilenso.com/people/jithu-200.png"
 
-  # - author: Srihari Sriraman
-  #   feed: "http://sriharisriraman.in/"
-  #   image:  "http://nilenso.com/people/srihari-200.png"
+  - author: Srihari Sriraman
+    feed: "http://sriharisriraman.in/atom.xml"
+    image:  "http://nilenso.com/people/srihari-200.png"
 
   # - author: Nivedita Priyadarshini
   #   feed: "http:///"
