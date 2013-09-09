@@ -14,3 +14,4 @@ node_modules
 bin
 .page_ranks
 config/deploy.rb
+.preview-mode
