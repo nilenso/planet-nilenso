@@ -1,122 +1,178 @@
-@font-face {
-  font-family: 'Junction';
-  src: url('/assets/fonts/junction-webfont.eot?v=1.0');
-  src: url('/assets/fonts/junction-webfont.eot?#iefix&v=1.0') format('embedded-opentype'), url('/assets/fonts/junction-webfont.woff?v=1.0') format('woff'), url('/assets/fonts/junction-webfont.ttf?v=1.0') format('truetype'), url('/assets/fonts/junction-webfont.svg#junctionregular?v=1.0') format('svg');
-  font-weight: normal;
-  font-style: normal;
+// This File is imported last, and will override other styles in the cascade
+// Add styles here to make changes without digging in too much
+
+html {
+	background: #FFFFFF;
 }
 
-$topbar-height: 56px;
-$sidebar-width: 17%;
-$pink: #f8337d;
+
 body {
-  background-image: url("../images/texture.png");
-  background-color: #EEEEEE;
+	font-family: 'Georgia', serif; font-size: 17px; color: #000;
+	max-width: 750px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+
+	a:hover { color: #3b185f; background: #f9f8fa; }
+
+	> header {
+		background: #FFFFFF;
+        padding-top: .5em;
+		h1 {
+			a, a:visited, a:hover {
+				color: #8C8C8C;
+			}
+		}
+	}
+
+	> nav {
+		background: #FFFFFF;
+		font-size: 20px;
+		border-bottom: 1px solid #F2F2F2;
+		padding-left: 0px;
+		padding-right: 0px;
+
+		a {
+           text-decoration: none;
+           font-size: 22px;
+           padding-left: 10px;
+           padding-right: 10px;
+        }
+		form .search {
+			border-radius: 0.2em 0.2em 0.2em 0.2em;
+			box-shadow: none;
+			border: 0px;
+			padding-top: 0.3em;
+			padding-bottom: 0.3em;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
+
+		li + li {
+			border-left: 0px;
+
+			a {
+				border: 0px;
+			}
+		}
+	}
+
+	> div {
+		background: #FFFFFF;
+		border-bottom: 0px;
+
+		> div {
+			background: #FFFFFF;
+			border-right-width: 0px;
+		}
+	}
+
+	> footer {
+	    text-align: center;
+		background: #FFFFFF;
+		text-shadow: none;
+		color: #888;
+	  	padding-left: 0;
+	  	padding-right: 0;
+		border-top: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		font-size: 15px;
+	}
+
+	#content {
+		> article {
+		    padding-top: 2em;
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
+		> div {
+			> article, > section {
+				padding-left: 0px;
+				padding-right: 0px;
+			}	
+		}
+	}
 }
 
-.right {
-  float: right;
+article {
+
+	.entry-content {
+		h3 {
+			font-style: italic
+		}
+	}
+
+	ul, ol {
+		margin-left: 2em;
+	}
+
+	a, a:visited {
+		color: #1863A1;
+	}
 }
 
-.left {
-  float: left;
+#content {
+	div.pagination {
+		margin: 0 10px;  
+		padding-bottom: 1.5em;
+		margin-top: 4em;
+		position: relative;
+		text-align: center;		
+		border-top: dotted 1px #D1D1D1;
+		border-bottom: dotted 1px #D1D1D1;
+		color: #888;
+	}
+
+	div.pagination a {
+		color: #888;
+	}	
+
+	.blog-index {
+		article {
+			padding-top: 2em;
+
+			header {
+                padding-top: 2em;
+				padding-left: 0;
+  				padding-right: 0;
+			}
+		}
+
+		h1 {
+			a {
+				font-weight: 400;
+			}
+
+			a:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.hentry {
+		h1.entry-title {
+			font-weight: 400;
+			font-size: 2.2em;
+		}
+	}
+	
 }
 
-.clear {
-  @include clearfix;
+figure.code {
+	.highlight {
+		background: #fafafa !important;
+
+		.gutter {
+			display: none;
+		}
+	}
 }
 
-.logo-image {
-  width: 50px;
+.pre-code, html .gist .gist-file .gist-syntax .highlight pre, .highlight code {
+	background: #fafafa !important;
 }
 
-header.topbar {
-  width: 100%;
-  height: $topbar-height;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: white;
-  opacity: 0.8;
-  overflow: hidden;
-  padding: 4px 20px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  z-index: 10000;
-
-  &:after {
-    clear: both;
-  }
-}
-
-.left-topbar {
-  width: $sidebar-width;
-  float: left;
-}
-
-.clearspace {
-  padding-top: $topbar-height;
-}
-
-.header-link {
-  font-size: 16px;
-  font-family: 'museo-sans' sans-serif;
-  color: black;
-  line-height: $topbar-height;
-  padding: 0 10px;
-}
-
-.description {
-  color: $pink;
-  font-size: 24px;
-  line-height: 24px;
-  font-family: "Rokkitt", serif;
-  text-shadow: 1px 1px 2px white;
-  width: 65%;
-  max-width: 300px;
-  margin: 0 0 30px 30px;
-}
-
-.logo-name {
-  font-family: 'Junction';
-  font-size: 30px;
-  padding: 0 4px;
-  vertical-align: top;
-}
-
-.page-link {
-  border-top: 3px solid transparent;
-}
-
-.page-link.active {
-  border-color: #f8337d;
-}
-
-.page-link:hover {
-  border-color: pink;
-}
-
-#main {
-  margin-left: $sidebar-width;
-}
-
-#sidebar {
-  width: $sidebar-width;
-}
-
-ul#menu a.popular-link {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: normal;
-  color: #888;
-}
-
-.popular-heading {
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: bold;
-  border-bottom: 1px solid black;
-  padding-bottom: 4px;
+aside {
+	display: none;
 }
