@@ -45,9 +45,11 @@ $header-padding-bottom: 1.5em !default;
 
 body {
   -webkit-text-size-adjust: none;
-  max-width: $max-width;
+  max-width: 700px;
+  min-width: 320px;
+  width: 50%;
   position: relative;
-  margin: 0 auto;
+  margin: 0 8%;
   > header, > nav, > footer, #content > article, #content > div > article, #content > div > section {
     @extend .group;
     padding-left: $pad-min;
@@ -190,3 +192,27 @@ body.sidebar-footer {
   }
 }
 
+.sidebar {
+  position: fixed;
+  right: 6%;
+  top: 150px;
+  width: 20%;
+  max-width: 300px;
+  min-width: 100px;
+  color: #aaa;
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .sidebar {
+    position: static;
+    width: auto;
+    max-width: 700px;
+    min-width: 0;
+  }
+}
