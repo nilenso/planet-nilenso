@@ -199,14 +199,20 @@ body.sidebar-footer {
   width: 36%;
   max-width: 300px;
   min-width: 100px;
-  color: #aaa;
+  color: #777;
   font-size: 15px;
+  text-shadow: white 1px 1px 1px;
+}
+
+.sidebar a {
+  color: #f8337d;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 768px) {
   body {
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
   }
 
   .sidebar {
@@ -214,5 +220,8 @@ body.sidebar-footer {
     width: auto;
     max-width: 700px;
     min-width: 0;
+    background-color: #eee;
+    padding: 10px;
+    border: 1px solid #e7dec3;
   }
 }
