@@ -109,6 +109,6 @@ GPG Suite will automatically decrypt the email and show it to you. It&#8217;s se
 <p>An email client that supports digital signatures (GPG Suite included) will complain if this verification fails.</p><div class="author">
   <img src="http://nilenso.com/people/timothy-200.jpg" style="width: 96px; height: 96;">
   <span style="position: absolute; padding: 32px 15px;">
-    <i>Original post by <a href="http://twitter.com/">Timothy Andrew</a> - check out <a href="http://blog.timothyandrew.net/">Timothy's Blog</a></i>
+    <i>Original post by <a href="http://twitter.com/timothyandrew">Timothy Andrew</a> - check out <a href="http://blog.timothyandrew.net/">Timothy's Blog</a></i>
   </span>
 </div>
