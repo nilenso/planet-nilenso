@@ -8,7 +8,7 @@ published: false
 
 ---
 
-As we set out to develop our very first native android app for [Ashoka Survey](https://github.com/nilenso/ashoka-survey-mobile-native), discussions about how should the architecture pan out ensued. Literature in the internet was not promising and we had to come back to the drawing board for almost every hurdle we jumped through - setting up the IDE, prominent libraries that could come handy, better ways to do testing. After two repo reboots, we finally decided on these -
+As we set out to develop the native android app for [Ashoka Survey](https://github.com/nilenso/ashoka-survey-mobile-native), discussions about how should the architecture pan out ensued. Literature on the internet was not promising and we had to come back to the drawing board for almost every hurdle we jumped through – setting up the IDE, prominent libraries that could come handy, better ways to do testing. After two repo reboots, we finally decided on these:
 
 - IntelliJ Idea CE
 - JUnit
@@ -23,7 +23,7 @@ Once we had the project setup sorted out, we ventured into getting out a basic l
 
 ### Architecture
 
-Identifying boundaries is paramount for writing good tests. Our `LoginActivity` started out to do way too many things - talking to network boundary and manipulating the view along with it. Testing proved to be a challenge at this point. What we wanted was -
+Identifying boundaries is paramount for writing good tests. Our `LoginActivity` started out to do way too many things - talking to network boundary and manipulating the view along with it. Testing proved to be a challenge at this point. What we wanted was:
 
 1. Check to see if a view layer could be extracted out from `Activity`.
 2. Identify a service layer which deals with IO.
@@ -34,6 +34,9 @@ Basically, flesh out an MVP-ish architecture. If the view layer and service laye
 ![MVP](/images/mvp.png)
 
 A peek into the [LoginActivity](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/main/java/com/infinitisuite/surveymobile/LoginActivity.java) reveals this.
+
+![a;skd;l](http://cl.ly/image/131M1t0b1K2n/2013-09-09%2009.47.00.png)
+
 
 ```java
 public class LoginActivity extends RoboActivity {
@@ -109,4 +112,4 @@ The mock is setup and verified to see if the contract defined by ILoginView inte
 
 ### Conclusion
 
-Our intention to give MVP a go mainly attributes to the fact that android architecture does not appear to have set in stone patterns and practices yet. It still isn't clear if MVP would pan out well with complex views or is it justified to break view logic entirely out of `Activity`. This is very much a work in progress.
+Our intention to give MVP a go mainly attributes to the fact that android applications do not  appear to have patterns and practices set in stone. It still isn't clear if MVP would pan out well with complex views or is it justified to break view logic entirely out of `Activity`. This is very much a work in progress.
