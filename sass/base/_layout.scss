@@ -45,9 +45,11 @@ $header-padding-bottom: 1.5em !default;
 
 body {
   -webkit-text-size-adjust: none;
-  max-width: $max-width;
+  max-width: 700px;
+  min-width: 320px;
+  width: 60%;
   position: relative;
-  margin: 0 auto;
+  margin: 0 8%;
   > header, > nav, > footer, #content > article, #content > div > article, #content > div > section {
     @extend .group;
     padding-left: $pad-min;
@@ -190,3 +192,36 @@ body.sidebar-footer {
   }
 }
 
+.sidebar {
+  position: absolute;
+  right: -45%;
+  top: 150px;
+  width: 36%;
+  max-width: 300px;
+  min-width: 100px;
+  color: #777;
+  font-size: 15px;
+  text-shadow: white 1px 1px 1px;
+}
+
+.sidebar a {
+  color: #f8337d;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .sidebar {
+    position: static;
+    width: auto;
+    max-width: 700px;
+    min-width: 0;
+    background-color: #eee;
+    padding: 10px;
+    border: 1px solid #e7dec3;
+  }
+}

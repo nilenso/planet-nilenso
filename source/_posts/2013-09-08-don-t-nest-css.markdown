@@ -63,7 +63,7 @@ We love writing css that is similar to our html. The following would seem natura
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>The correct way:</h1>
+<h2>The correct way:</h2>
 
 <p>Add the context, name of component/module in the class attribute:</p>
 

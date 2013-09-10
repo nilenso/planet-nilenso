@@ -238,6 +238,10 @@ figure.code figcaption span {
   background: #ececec;
 }
 
+figure.code figcaption span:empty {
+  display: none;
+}
+
 article figure.code figcaption {
   text-shadow: none;
   text-align: left;
