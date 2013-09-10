@@ -1,11 +1,9 @@
 ---
 layout: post
 title: "Android Development - Harnessing powers of MVP"
-date: 2013-09-04 18:33
+date: 2013-09-10 18:33
 author: [Jithu Gopal, Akshay Gupta]
 comments: true
-published: false
-
 ---
 
 As we set out to develop the native android app for [Ashoka Survey](https://github.com/nilenso/ashoka-survey-mobile-native), discussions about how should the architecture pan out ensued. Literature on the internet was not promising and we had to come back to the drawing board for almost every hurdle we jumped through – setting up the IDE, prominent libraries that could come handy, better ways to do testing. After two repo reboots, we finally decided on these:
