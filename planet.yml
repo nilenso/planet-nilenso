@@ -11,6 +11,7 @@ planet:
       - "gsoc"
       - "gnome"
       - "lifehacks"
+      - "dev"
 
 blogs:
   - author: "Akshay Gupta"
