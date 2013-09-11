@@ -14,7 +14,7 @@ layout: post
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>And this would bomb with an error like <code>Can't dump anonymous Module</code>.<br/>
+<p>And this would bomb with an error like <code>Can't dump anonymous Module</code>.
 After some time getting nowhere, we solved it like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
