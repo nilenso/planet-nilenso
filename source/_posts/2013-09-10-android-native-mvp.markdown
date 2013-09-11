@@ -2,11 +2,10 @@
 layout: post
 title: "Android Development - Harnessing powers of MVP"
 date: 2013-09-10 18:33
-author: [Jithu Gopal, Akshay Gupta]
 comments: true
 ---
 
-As we set out to develop the native android app for [Ashoka Survey](https://github.com/nilenso/ashoka-survey-mobile-native), discussions about how should the architecture pan out ensued. Literature on the internet was not promising and we had to come back to the drawing board for almost every hurdle we jumped through – setting up the IDE, prominent libraries that could come handy, better ways to do testing. After two repo reboots, we finally decided on these:
+As we set out to develop the native android app for [Ashoka Survey](https://thesurveys.org), discussions about how should the architecture pan out ensued. Literature on the internet was not promising and we had to come back to the drawing board for almost every hurdle we jumped through – setting up the IDE, prominent libraries that could come handy, better ways to do testing. After two repo reboots, we finally decided on these:
 
 - IntelliJ Idea CE
 - JUnit
@@ -15,7 +14,7 @@ As we set out to develop the native android app for [Ashoka Survey](https://gith
 - [Mockito](https://code.google.com/p/mockito)
 - [FEST](http://fest.easytesting.org/)
 
-Maven dictated the basic skeleton to work out from. If you are not aware of dependency injection, do checkout an [earlier post by us on RoboGuice](http://planet.nilenso.com/blog/2013/07/10/using-roboguice-to-inject-views-into-a-pojo/). We used [Android Async Http library](https://github.com/loopj/android-async-http) to deal with servicing network requests.
+Maven dictated the basic skeleton to work out from. If you are not aware of dependency injection, do check out an [earlier post by us on RoboGuice](http://planet.nilenso.com/blog/2013/07/10/using-roboguice-to-inject-views-into-a-pojo/). We used [Android Async Http library](https://github.com/loopj/android-async-http) to deal with servicing network requests.
 
 Once we had the project setup sorted out, we ventured into getting out a basic login screen.
 
@@ -32,8 +31,6 @@ Basically, flesh out an MVP-ish architecture. If the view layer and service laye
 ![MVP](/images/mvp.png)
 
 A peek into the [LoginActivity](https://github.com/nilenso/ashoka-survey-mobile-native/blob/4cc2acd7698771fe483fb43cc6f38c0092495d1c/src/main/java/com/infinitisuite/surveymobile/LoginActivity.java) reveals this.
-
-![a;skd;l](http://cl.ly/image/131M1t0b1K2n/2013-09-09%2009.47.00.png)
 
 
 ```java
@@ -106,8 +103,10 @@ public class LoginPresenterTest {
 }
 ```
 
-The mock is setup and verified to see if the contract defined by ILoginView interface is invoked. It should be pointed out this is the farthest these tests could go and are not exactly end-to-end. You could just create implementation stubs out of this interface, not touching any view state, and still have the test passing. But having this view layer abstraction, makes it so painless to write presenter tests. Probably it might make sense to have a combination of few end-to-end tests and a whole battery of these functional tests.
+The mock is setup and verified to see if the contract defined by `ILoginView` interface is invoked. It should be pointed out this is the farthest these tests could go and are not exactly end-to-end. You could just create implementation stubs out of this interface, not touching any view state, and still have the test passing. But having this view layer abstraction, makes it so painless to write presenter tests. We shoud have a combination of few end-to-end tests and a whole battery of these functional tests.
 
 ### Conclusion
 
-Our intention to give MVP a go mainly attributes to the fact that android applications do not  appear to have patterns and practices set in stone. It still isn't clear if MVP would pan out well with complex views or is it justified to break view logic entirely out of `Activity`. This is very much a work in progress.
+We wanted to give MVP a go because android applications did not appear to have patterns set in stone. It still isn't clear if MVP would pan out well with complex views or is it justified to break view logic entirely out of `Activity`. This is very much a work in progress.
+
+![Login Screen](http://cl.ly/image/131M1t0b1K2n/2013-09-09%2009.47.00.png)
