@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ashoka Survey Title"
+title: "Building an offline survey tool for Rural India"
 date: 2013-09-03 18:21
 comments: true
 published: false
@@ -9,22 +9,27 @@ published: false
 
 At Nilenso, we've helped [Ashoka](http://india.ashoka.org/) accomplish their initiative in building infrastructure for the [citizen sector](https://www.ashoka.org/citizensector).
 
+Infiniti is a suite of products envisioned for social entrepreneurs, the fellows at Ashoka and other citizen sector organizations to get a variety of quality data through crowd sourcing, organized surveys and market research.
 
-Infiniti is a suite of products envisioned for social entrepreneurs, the fellows at Ashoka and other citizen sector organizations to get a variety of quality data through crowd sourcing, organized surveys and market research. It is currently very much in use at Ashoka around these verticals:
+Field agents responsible for carrying out these surveys face problems where there is often severe lack of proper mobile connectivity and even basic amenities and effectively capture data offline and have it synced once they return back to camp.
+
+![](http://cl.ly/image/012e0D3u2P1k/Image%202013.09.10%208%3A11%3A32%20PM.png)
+
+It is currently very much in use at Ashoka around these verticals:
 
 - Nutrition and Wellness – for addressing malnutrition problem among children in India
 - Affordable Housing – for enabling access to housing in the informal sector
 - Rural Innovation and Farming – to understand the role of women in Agriculture
 
-The Infiniti suite is largely composed of these attributes:
+This suite is largely composed of these ideas:
 
 ![Infiniti Suite](http://cl.ly/image/3u2E0I0M1A0Z/Image%202013.09.05%206_40_04%20PM.png)
 
-As a part of this, we built Ashoka Survey Web––one of the arms that takes care of data collection, validation, integrity and reporting.
+As a part of this, we built Ashoka Survey Web – one of the arms that takes care of data collection, validation, integrity and reporting.
 
-# Survey Web
+## How does Survey Web work?
 
-It's basically a collection of these 4 applications:
+It is a collection of these 4 applications:
 
 - the auth provider, [user-owner](https://github.com/nilenso/ashoka-user-owner).
 - the survey builder, [survey-web](https://github.com/nilenso/ashoka-survey-web) 
@@ -33,15 +38,14 @@ It's basically a collection of these 4 applications:
   [survey-mobile](https://github.com/nilenso/ashoka-survey-mobile),
   [survey-mobile-native](https://github.com/nilenso/ashoka-survey-mobile-native).
 
-Here's a figure explaining their roles and interfaces:
-  
-![Architecture Diagram](http://cl.ly/image/3a0n2g0Q1A16/architecture.png)
-
 #### Process
-
-Once the fellows at Ashoka are done identifying the problem sets and designing the questions for the survey, they use the survey builder to quickly digitise them. These surveys can be shared with different registered organisations or shared publicly.
+The fellows at Ashoka first identify the problem sets based on the verticals mentioned above and create a questionnaire that will effectively capture the data necessary. Once that is done, they use the survey builder to quickly digitise them. These surveys can be shared with different registered organisations or shared publicly.
 
 The responses are then collected by the field agents of the respective organizations using the mobile application that can take validated answers client-side and store them offline. These can be synced to survey-web, once the field agents get internet connectivity.
+
+Here's a figure explaining the roles and interfaces of each of these applications:
+  
+![Architecture Diagram](http://cl.ly/image/3a0n2g0Q1A16/architecture.png)
 
 We created a quick one-minute screencast that describes a simple workflow on how a survey is created, how a response is taken on that survey on the web and some basic reports you can see around it.
 
@@ -50,11 +54,11 @@ We created a quick one-minute screencast that describes a simple workflow on how
   Your browser does not support the video tag.
 </video>
 
-Unfortunately, we don't have anything to show for the field work that Ashoka does using these apps, but it is definitely something worth experiencing!
+We'll soon put up pictures of some of the trips we've been to, experiencing `survey-web` being used in the field. Stay tuned! 
 
 #### Need for a separate auth app
 
-The user-owner app was built to serve as a centralized auth provider for all of Ashoka's web services. It is implemented using the [doorkeeper](https://github.com/applicake/doorkeeper) gem.
+The `user-owner` app was built to serve as a centralized auth provider for all of Ashoka's web services. It is implemented using the [doorkeeper](https://github.com/applicake/doorkeeper) gem.
 
 #### Survey Builder amongst the alternatives available
 
@@ -64,18 +68,22 @@ The user-owner app was built to serve as a centralized auth provider for all of 
 
 [SurveyMonkey](http://surveymonkey.com) is a good tool, but we couldn't use it since we needed complete ownership of the survey and response data.
 
-# Future
-
 #### Survey Builder V2
-The current survey builder, although built with a lot of thought on usability, fails on a few aspects. Accenture woked on the designs for a better survey builder. This is a work in progress, and can be viewed from the create-v2 menu. The new VDs are [here](https://github.com/nilenso/ashoka-survey-web/commit/a5aeb01fadedf43311a779412ef49c0c28081d92)
+The current survey builder works well and is pretty functional, but it fails on a few usability aspects.
+
+- Being able to switch between one question type to another. Simply using a drop-down bar instead of individual buttons to solve this.
+
+- Editing concerns are shared across both panes, fine-grained question (question options, sub-questions etc.) level editing is on the left pane, more general editing and meta-information (type of question, maximum/minimum values for answers etc.) about the questions is on the right.
+
+We worked together with Accenture to come up with new designs and started working on rebuilding it last month. It is still in progress, and can be viewed from the `create-v2` menu. The new visual designs are [here](https://github.com/nilenso/ashoka-survey-web/commit/a5aeb01fadedf43311a779412ef49c0c28081d92).
 
 #### The Native Android App
-The currently funtional survey-mobile is built with [Titanium](http://www.appcelerator.com/platform/titanium-platform/). It works, but we certainly want to move away from this, to a native app.
-Here is where we are with the native app as of now: [insert link to jithu's post]
-
-#### Mobile app redesign
-Here are the mockups for the new mobile app: [insert link here]
+The `survey-mobile` app is built with [Titanium](http://www.appcelerator.com/platform/titanium-platform/). We're looking to move away from this to a native android app. You can read a bit about where we're at in this [post](http://blog.nilenso.com/blog/2013/09/10/android-native-mvp/) and checkout the mockups [here](https://github.com/nilenso/ashoka-survey-mobile-native/commit/317c4692227249d9b476286d821493404b0acb0f).
 
 #### Data Portal
-Each survey conducted by ashoka typically has about 300 responses. We currently have some basic reports built with google charts. But we don't have the ability to say, interpret data of similar/same respondants across multiple surveys.
-Here are the mockups for what is planned in this regard: [insert link to mockups]
+Each survey conducted by Ashoka typically has about 300 responses. We currently have some basic reports built with google charts. But we don't have the ability to say, interpret data of similar/same respondents across multiple surveys.
+
+Here are the mockups for the Data Portal section of things. You can figure this out.
+
+#### Contribution
+Each of these applications are entirely open-source, feel free to check them out on the [nilenso GitHub page](https://github.com/nilenso)!
