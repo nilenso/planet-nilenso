@@ -3,6 +3,15 @@
 planet:
     posts_directory: source/_posts/
     templates_directory: source/_layouts/
+    whitelisted_tags:
+      - "nilenso"
+      - "open source"
+      - "software"
+      - "thoughtworks"
+      - "gsoc"
+      - "gnome"
+      - "lifehacks"
+      - "dev"
 
 blogs:
   - author: "Akshay Gupta"

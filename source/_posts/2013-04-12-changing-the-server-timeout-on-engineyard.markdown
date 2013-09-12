@@ -45,7 +45,7 @@ Adding a larger image (like this 20MB image) should result in a validation error
 
 <p>The server didn&#8217;t seem to be following this configuration.</p>
 
-<p>After a fair bit of googling and help from the <code>#engineyard</code> IRC channel, this is what we did to fix it.<br/>
+<p>After a fair bit of googling and help from the <code>#engineyard</code> IRC channel, this is what we did to fix it.
 Add the following lines to <code>/data/nginx/nginx.conf</code> inside the <code>http{}</code> block (replacing 300 with the timeout you need).</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

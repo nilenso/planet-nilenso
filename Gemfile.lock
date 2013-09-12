@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/ssrihari/planet.rb.git
+  revision: df6a19334e198b2db67aa4b539279f6202d1483d
+  specs:
+    planet (0.4.0)
+      box
+      feedzirra
+      gli
+      mustache
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,7 +21,7 @@ GEM
     activesupport (3.1.12)
       multi_json (~> 1.0)
     box (0.1.1)
-    builder (3.0.4)
+    builder (3.2.2)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -46,7 +56,7 @@ GEM
     gli (2.7.0)
     haml (3.1.7)
     highline (1.6.14)
-    i18n (0.6.1)
+    i18n (0.6.5)
     jekyll (0.12.0)
       classifier (~> 1.3)
       directory_watcher (~> 1.1)
@@ -76,11 +86,6 @@ GEM
     nokogiri (1.5.5)
     octopress-popular-posts (0.1.0)
       PageRankr (~> 3.2.1)
-    planet (0.4.1)
-      box
-      feedzirra
-      gli
-      mustache
     posix-spawn (0.3.6)
     public_suffix (1.3.1)
     pygments.rb (0.3.4)
@@ -92,7 +97,7 @@ GEM
     rake (0.9.2.2)
     rb-fsevent (0.9.1)
     rdiscount (2.0.7.3)
-    rdoc (3.12.1)
+    rdoc (3.12.2)
       json (~> 1.4)
     rubypants (0.2.0)
     sass (3.2.9)
@@ -122,7 +127,7 @@ DEPENDENCIES
   jekyll (~> 0.12)
   liquid (~> 2.3.0)
   octopress-popular-posts
-  planet
+  planet!
   pygments.rb (~> 0.3.4)
   rake (~> 0.9)
   rb-fsevent (~> 0.9)
