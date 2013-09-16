@@ -4,15 +4,14 @@ title: "Octopress, Planet.rb and the Nilenso Blog"
 date: 2013-09-16 16:26
 comments: true
 categories: 
-published: false
 ---
 
 We use [Octopress](http://octopress.com) with [planet.rb](https://github.com/pote/planet.rb) for this blog. It aggregates our personal blogs and also lets us post on the company's behalf. It works pretty well.
 
 We started off with [planetplanet](http://www.planetplanet.org/), tried [planetvenus](http://www.intertwingly.net/code/venus/docs/index.html) and then settled on planet.rb. The plusses are:
 
--  We can now use the blog as both, a company blog and an aggregator at the same time.
--  Octopress is great for us ruby devs. We needed partials, sass, themeability, extensibility and a static site.
+-  We can now use the blog as both: a company blog and an aggregator at the same time.
+-  Octopress is great for us Ruby devs. We needed partials, sass, themeability, extensibility and a static site.
 -  Planet.rb generates markdown files for all the feeds it parses. This keeps it consistent with the rest of the blog, and we love writing markdown.
 
 ##The tweaks we needed
