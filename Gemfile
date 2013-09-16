@@ -19,4 +19,4 @@ end
 
 gem 'sinatra', '~> 1.4.2'
 gem 'capistrano'
-gem 'planet', :git => 'git://github.com/ssrihari/planet.rb.git'
+gem 'planet', :git => 'git://github.com/nilenso/planet.rb.git'
