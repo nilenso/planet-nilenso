@@ -12,7 +12,7 @@ We started off with [planetplanet](http://www.planetplanet.org/), tried [planetv
 
 -  We can now use the blog as both: a company blog and an aggregator at the same time.
 -  Octopress is great for us Ruby devs. We needed partials, sass, themeability, extensibility and a static site.
--  Planet.rb generates markdown files for all the feeds it parses. This keeps it consistent with the rest of the blog, and we love writing markdown.
+-  planet.rb generates markdown files for all the feeds it parses. This keeps it consistent with the rest of the blog, and we love writing markdown.
 
 ##The tweaks we needed
 Planet.rb is still in development, and there were a couple of things that needed to change before we could release. We sent pull requests for these which are now merged in to [planet.rb v0.5.0](https://github.com/pote/planet.rb/releases/tag/v0.5.0).
@@ -47,7 +47,7 @@ planet-nilenso|master ⇒ planet generate
 
 ##The deploy hook and cronjob
 
-We use capistrano to deploy our blog. Here's the post deploy hook that we use on it:
+We use [Capistrano](https://github.com/capistrano/capistrano) to deploy our blog. Here's the post deploy hook that we use on it:
 {% codeblock config/deploy.rb lang:ruby %}
 task :octopress_planet_generate do
   run "cd #{deploy_to}/current && bundle exec planet generate && bundle exec rake generate"
