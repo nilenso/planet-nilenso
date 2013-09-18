@@ -1,13 +1,3 @@
-GIT
-  remote: git://github.com/nilenso/planet.rb.git
-  revision: 9d66ba7bb81e0bdd1d312d8c6c6cd3c63990311e
-  specs:
-    planet (0.4.0)
-      box
-      feedzirra
-      gli
-      mustache
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -86,6 +76,11 @@ GEM
     nokogiri (1.5.5)
     octopress-popular-posts (0.1.0)
       PageRankr (~> 3.2.1)
+    planet (0.5.0)
+      box
+      feedzirra
+      gli
+      mustache
     posix-spawn (0.3.6)
     public_suffix (1.3.1)
     pygments.rb (0.3.4)
@@ -127,7 +122,7 @@ DEPENDENCIES
   jekyll (~> 0.12)
   liquid (~> 2.3.0)
   octopress-popular-posts
-  planet!
+  planet
   pygments.rb (~> 0.3.4)
   rake (~> 0.9)
   rb-fsevent (~> 0.9)
