@@ -175,3 +175,27 @@ server {
 Create an index file at `files/default/index.html` which would eventually serve as the index file for the website as mentioned in the configuration file.  
 
 NOTE: Refactor out custom attributes
+
+### Installing Ruby
+
+Next we'll setup `rbenv` and then instruct it to install `ruby` and `bundler` for us. We'll start by adding this dependency in `metadata.rb` first.
+
+```
+depends "rbenv", "~> 1.6.5"
+```
+
+And then simply writing another recipe file like before called `ruby.rb`.
+
+```
+include_recipe "rbenv::default"
+include_recipe "rbenv::ruby_build"
+
+rbenv_ruby "2.0.0-p247" do
+  global true
+end
+
+rbenv_gem "bundler" do
+  ruby_version "2.0.0-p247"
+end
+```
+Include it in `default.rb` as `include_recipe "nilenso-cookbook::ruby"`
