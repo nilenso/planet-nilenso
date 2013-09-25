@@ -13,7 +13,6 @@ Vagrant Specific (this is for your local box)
 vagrant box add precise64 http://files.vagrantup.com/precise64.box
 
 vagrant box list
-
 ```
 
 Setting up the environment (on your vagrant/production box)
@@ -69,7 +68,6 @@ Vagrant.configure("2") do |config|
     ]
   end
 end
-
 ```
 
 Time to get the box up and running.
@@ -99,12 +97,81 @@ user "deploy" do
 end
 ```
 
+NOTE: Mention refactoring out attributes
+
 Let's ssh into the box and check if the user and group got added.
 
 ```
 > id deploy
+uid=998(deploy) gid=1003(nilenso) groups=1003(nilenso)
+```
+Now that the user and group is set up properly, let's move on to install nginx.
+
+### Installing nginx
+
+We begin by adding `nginx` into in the `metadata.rb`.
 
 ```
+depends "nginx", "~> 1.8.0"
+```
 
+Now that the dependency is stated we should invoke it from our `default` recipe. It is best to update the package manager cache depending on the linux flavour you're using. In our case, since we're using Ubuntu, we include the `apt` recipe so that it can update the package list and provide us with the latest `nginx-1.8.0`.
 
-#Installing nginx
+NOTE: Figure out how to make this distribution agnostic.
+
+Ensure that the `apt` recipe is included before `nginx` as chef installs packages in the specified order.
+
+```
+include_recipe 'apt'
+include_recipe 'nginx'
+```
+
+The following code mirrors a basic nginx setup. You can check out the attributes used in the cookbook [README](https://github.com/opscode-cookbooks/nginx).
+
+```
+nginx_site 'default' do
+  enable false
+end
+
+directory "/var/www/nilenso" do
+  action :create
+  recursive true
+end
+
+template "#{node[:nginx][:dir]}/sites-available/nilenso" do
+  source "nilenso.erb"
+  mode 0777
+  owner node[:nilenso][:user]
+  group node[:nilenso][:group]
+end
+
+nginx_site "nilenso" do
+  enable true
+end
+
+cookbook_file "/var/www/nilenso/index.html" do
+  source "index.html"
+  mode 0755
+  owner node[:nilenso][:user]
+end
+```
+
+NOTE: Explain the dsl
+
+The `cookbook_file` section creates the `index.html` file in the `/var/www/nilenso` directory.
+The `template` section creates the nginx configuration file from the erb template situated at `template/default/nilenso.erb`
+
+```
+server {
+  server_name <%= node['hostname'] %>;
+
+  location / {
+    root /var/www/nilenso;
+    index index.html index.htm;
+  }
+}
+```
+
+Create an index file at `files/default/index.html` which would eventually serve as the index file for the website as mentioned in the configuration file.  
+
+NOTE: Refactor out custom attributes
