@@ -50,7 +50,7 @@ bundle
 rbenv local 2.0.0-p247
 ```
 
-The Vagrant file that got generated needs to be edited. Remove the legacy `config.ssh.timeout` and `config.ssh.maxtries` and add `config.vm.boot_timeout` setting as it is deprecated in Vagrant 1.3.0. Berkshelf (ver 2.0.10) has not yet been updated to reflect this in the scaffold that it generates. Since precise64 is already installed, you can get rid of the box_url setting and keep the `box` setting as `precise64`. At the moment, you do not need `chef.json` too.
+The Vagrant file that got generated needs to be edited. Remove the legacy `config.ssh.timeout` and `config.ssh.maxtries` and add `config.vm.boot_timeout` setting as it is deprecated in Vagrant 1.3.0. Berkshelf (ver 2.0.10) has not yet been updated to reflect this in the scaffold that it generates. Since precise64 is already installed, you can get rid of the `box_url` setting and keep the `box` setting as `precise64`. `chef.json` can be omitted too. Keep the `chef_version` setting as `latest` so that omnibus will pick up the latest chef version while provisioning the box
 
 ```
 Vagrant.configure("2") do |config|
@@ -58,7 +58,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = "precise64"
   config.vm.network :private_network, ip: "33.33.33.10"
 
-  config.vm.timeout = 120
+  config.omnibus.chef_version = :latest
+  config.vm.boot_timeout = 120
 
   config.berkshelf.enabled = true
 
@@ -70,3 +71,40 @@ Vagrant.configure("2") do |config|
 end
 
 ```
+
+Time to get the box up and running.
+
+```
+vagrant up
+```
+
+If everything went well, we can check if chef was installed on the box by sshing into it.
+
+```
+> vagrant ssh
+
+> chef-client -v
+Chef: 11.6.0
+```
+
+It's time to create a user and a group on the new box that we've created.
+
+```
+group "nilenso"
+
+user "deploy" do
+  group "nilenso"
+  system true
+  shell "/bin/bash"
+end
+```
+
+Let's ssh into the box and check if the user and group got added.
+
+```
+> id deploy
+
+```
+
+
+#Installing nginx
