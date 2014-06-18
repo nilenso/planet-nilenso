@@ -40,6 +40,7 @@
   text-transform: lowercase;
   font-variant: normal;
   text-decoration: none;
+  text-shadow: none;
 }
 
 .header-logo {
@@ -91,6 +92,7 @@ nav header a:visited {color: black;}
 nav header a {
   font-family: "calluna";
 }
-.rss-link:hover .rss-link-image {
+
+.rss-link-image:hover {
   @include filter(contrast(100%));
 }
