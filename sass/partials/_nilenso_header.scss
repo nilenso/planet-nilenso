@@ -93,6 +93,10 @@ nav header a {
   font-family: "calluna";
 }
 
-.rss-link-image:hover {
-  @include filter(contrast(100%));
+.rss-link .rss-link-image {
+  opacity: 0.7;
+}
+
+.rss-link:hover .rss-link-image {
+  opacity: 1;
 }
