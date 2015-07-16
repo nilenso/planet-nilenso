@@ -3,8 +3,6 @@ layout: post
 title: "How to co-op: Salaries & Reviews"
 date: 2015-06-30 14:33
 comments: true
-author: Steven
-published: true
 categories:
 ---
 
