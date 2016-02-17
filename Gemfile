@@ -20,4 +20,4 @@ end
 
 gem 'sinatra'
 gem 'capistrano'
-gem 'planet'
+gem 'planet', :git => 'https://github.com/govindkrjoshi/planet.rb'
